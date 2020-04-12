@@ -1,0 +1,31 @@
+{
+  "name": "easysaleapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.9",
+    "nodemailer": "^6.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suthura/easysaleapi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/suthura/easysaleapi/issues"
+  },
+  "homepage": "https://github.com/suthura/easysaleapi#readme",
+  "description": ""
+}
