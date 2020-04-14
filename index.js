@@ -5,6 +5,23 @@ const dotenv = require('dotenv');
 const authRoute = require('./routes/auth');
 const mailRoute = require('./routes/resetpass');
 const stockRoute = require('./routes/stocks');
+cors = require('cors')
+const corsOptions = {
+    origin: true,
+    credentials: true
+};
+
+app.options('*', cors(corsOptions));
+//set access to all  connect to this api
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With, Origin, Content-Type, Accept, Authorization');
+    if (req.method === 'OPTIONS') {
+        Response.header('Access-Control-Allow-Methods', 'PUT, POST, DELETE, GET');
+        return res.status(200).json({});
+    }
+    next();
+});
 
 var bodyParser = require('body-parser');
 
