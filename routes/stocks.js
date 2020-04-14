@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const User = require('../model/User');
+const Item = require('../model/Item');
 const { registerValidation } = require('../Validation/registerValidation');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
@@ -10,7 +10,7 @@ router.post('/addItem', async(req, res) => {
     console.log(req.body);
     const verified = jwt.verify(req.body.token, process.env.TOKEN_SECRET);
 
-    const user = new User({
+    const item = new Item({
         name: req.body.name,
         price: req.body.price,
         description: req.body.description,
@@ -18,7 +18,7 @@ router.post('/addItem', async(req, res) => {
         userID: verified._id,
     });
     try {
-        const savedUser = await user.save();
+        const savedItem = await item.save();
 
         res.send({
             messege: 'success'
