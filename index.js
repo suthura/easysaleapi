@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRoute = require('./routes/auth');
 const mailRoute = require('./routes/resetpass');
+const stockRoute = require('./routes/stocks');
 
 var bodyParser = require('body-parser');
 
@@ -23,6 +24,7 @@ app.use('/uploads', express.static('uploads'));
 
 //route middleware
 app.use('/api/auth', authRoute);
+app.use('/api/stocks', stockRoute);
 
 
 
