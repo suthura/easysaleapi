@@ -31,4 +31,17 @@ router.post('/addItem', async(req, res) => {
 });
 
 
+router.post('/getmine', async(req, res) => {
+
+    console.log(req.body);
+    const verified = jwt.verify(req.body.token, process.env.TOKEN_SECRET);
+
+    const items = await Item.find({
+        userID: verified._id
+    });
+
+    res.send(items);
+
+});
+
 module.exports = router;
