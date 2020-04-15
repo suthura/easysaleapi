@@ -65,6 +65,16 @@ router.post('/updateitem', async(req, res) => {
     });
 });
 
+router.post('/removeitem', async(req, res) => {
 
+    try {
+        await Item.updateOne({
+            _id: req.body.itemid
+        });
+        res.send({ "message": "success" });
+    } catch (error) {
+        res.send({ error });
+    }
+});
 
 module.exports = router;
