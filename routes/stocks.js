@@ -44,4 +44,27 @@ router.post('/getmine', async(req, res) => {
 
 });
 
+router.post('/updateitem', async(req, res) => {
+
+    var query = { _id: req.body.itemid };
+
+    var newVal = {
+        $set: {
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description,
+            stock: req.body.stock
+        }
+    }
+
+    await Item.updateOne(query, newVal, function(err) {
+        if (err) {
+            res.send(err);
+        }
+        res.send({ "message": "success" })
+    });
+});
+
+
+
 module.exports = router;

@@ -43,7 +43,4 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api/auth', authRoute);
 app.use('/api/stocks', stockRoute);
 
-
-
-
 app.listen(process.env.PORT || 5000, () => console.log("Server up and running"));
