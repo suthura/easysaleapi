@@ -68,7 +68,7 @@ router.post('/updateitem', async(req, res) => {
 router.post('/removeitem', async(req, res) => {
 
     try {
-        await Item.updateOne({
+        await Item.deleteOne({
             _id: req.body.itemid
         });
         res.send({ "message": "success" });
