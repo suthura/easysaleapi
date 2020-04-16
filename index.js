@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const authRoute = require('./routes/auth');
 const mailRoute = require('./routes/resetpass');
 const stockRoute = require('./routes/stocks');
+const returnsRoute = require('./routes/returns');
 cors = require('cors')
 const corsOptions = {
     origin: true,
@@ -42,5 +43,6 @@ app.use('/uploads', express.static('uploads'));
 //route middleware
 app.use('/api/auth', authRoute);
 app.use('/api/stocks', stockRoute);
+app.use('/api/returns', returnsRoute);
 
 app.listen(process.env.PORT || 5000, () => console.log("Server up and running"));
