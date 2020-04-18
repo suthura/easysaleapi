@@ -6,6 +6,7 @@ const authRoute = require('./routes/auth');
 const mailRoute = require('./routes/resetpass');
 const stockRoute = require('./routes/stocks');
 const returnsRoute = require('./routes/returns');
+const salesRoute = require('./routes/sales');
 cors = require('cors')
 const corsOptions = {
     origin: true,
@@ -44,5 +45,6 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api/auth', authRoute);
 app.use('/api/stocks', stockRoute);
 app.use('/api/returns', returnsRoute);
+app.use('/api/sales', salesRoute);
 
 app.listen(process.env.PORT || 5000, () => console.log("Server up and running"));
