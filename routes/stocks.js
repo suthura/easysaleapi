@@ -72,6 +72,7 @@ router.post('/updateStock', async(req, res) => {
     var newVal = {
         $set: {
             stock: req.body.newStock
+
         }
     }
 
