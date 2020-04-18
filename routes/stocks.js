@@ -65,6 +65,24 @@ router.post('/updateitem', async(req, res) => {
     });
 });
 
+router.post('/updateStock', async(req, res) => {
+
+    var query = { _id: req.body.itemid };
+
+    var newVal = {
+        $set: {
+            stock: req.body.newStock
+        }
+    }
+
+    await Item.updateOne(query, newVal, function(err) {
+        if (err) {
+            res.send(err);
+        }
+        res.send({ "message": "success" })
+    });
+});
+
 router.post('/removeitem', async(req, res) => {
 
     try {
