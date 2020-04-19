@@ -31,6 +31,16 @@ router.post('/newsale', async(req, res) => {
 });
 
 
+router.post('/getmysales', async(req, res) => {
 
+    const verified = jwt.verify(req.body.token, process.env.TOKEN_SECRET);
+
+
+    const sales = await Sale.find({
+        userID: verified._id
+    }).sort({ saletime: -1 });
+
+    res.send(sales);
+});
 
 module.exports = router;
