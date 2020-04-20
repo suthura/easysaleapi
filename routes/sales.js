@@ -43,4 +43,29 @@ router.post('/getmysales', async(req, res) => {
     res.send(sales);
 });
 
+router.post('/getmyweeksales', async(req, res) => {
+
+    function remDays(date, days) {
+        var result = new Date(date);
+        result.setDate(result.getDate() - days);
+        console.log(result);
+
+        return result;
+    }
+
+    const verified = jwt.verify(req.body.token, process.env.TOKEN_SECRET);
+    const date = req.body.currentdate;
+
+
+    const sales = await Sale.find({
+        userID: verified._id,
+        saletime: {
+            "$gte": remDays(date, 7),
+            "$lt": date
+        }
+    }).sort({ saletime: -1 });
+
+    res.send(sales);
+});
+
 module.exports = router;
