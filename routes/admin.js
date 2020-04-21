@@ -34,7 +34,7 @@ router.get('/getusers', async(req, res) => {
     res.send(users);
 
 });
-
+//
 
 router.post('/updatestatus', async(req, res) => {
     console.log(req);
