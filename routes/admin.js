@@ -37,6 +37,7 @@ router.get('/getusers', async(req, res) => {
 
 
 router.post('/updatestatus', async(req, res) => {
+    console.log(req);
 
     var query = { _id: req.body.userid };
 
