@@ -64,5 +64,27 @@ router.post('/login', async(req, res) => {
 });
 
 
+router.post('/adminlogin', async(req, res) => {
+    const user = await User.findOne({
+        email: req.body.email,
+        usertype: "admin"
+    });
+    if (!user) return res.status(400).send({ message: 'Email Not Exist' });
+
+    const validPass = await bcrypt.compare(req.body.password, user.password);
+
+    if (!validPass) return res.status(400).send({ message: 'Password Not Valid' });
+
+    const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+
+
+    res.header('auth-token', token).send({
+        loginstatus: 'olduser',
+        status: user.status,
+        token: token,
+        usertype: user.usertype
+    });
+});
+
 
 module.exports = router;
